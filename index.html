@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="./css/bookstore.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid" id="book">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between fixed-top"
+      >
+        <div class="title">
+          <h1>UBIQUM BOOKSTORE</h1>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            v-model="searched"
+            class="form-control mr-sm-2 searchInput"
+            type="text"
+            placeholder="Search for books"
+          />
+        </form>
+      </nav>
+      <!-- declaramos for sobre la función computed filterBooks -->
+      <div class="bookstore">
+        <div class="flip-card" v-for="book in filterBooks">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <!-- Para vincular el valor de imagen uestro objeto de datos con el 
+              src de nuestra img etiqueta, usaremos la v-bind. -->
+
+              <img :src="book.cover" alt="Avatar" class="coverImage" />
+            </div>
+            <div class="flip-card-back bg-yellow">
+              <div class="title">
+                <h4>{{book.title}}</h4>
+              </div>
+              <div class="description">
+                <p>{{book.description}}</p>
+              </div>
+              <div class="button">
+                <button class="btn btn-outline-danger">
+                  <a
+                    class="text-white"
+                    v-bind:href="book.detail"
+                    data-fancybox="images"
+                    >More Info</a
+                  >
+                </button>
+                <br />
+                <br />
+                <a
+                  target="_blank"
+                  href="https://www.amazon.com/books-used-books-textbooks/b?ie=UTF8&node=283155"
+                >
+                  Buy </a
+                ><img
+                  src="http://ir-na.amazon-adsystem.com/e/ir?t=&l=ur2&o=1"
+                  width="1"
+                  height="1"
+                  border="0"
+                  alt=""
+                  style="border:none !important; margin:0px !important;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 id="noResult">
+      Sorry, no books were found. Please search again.
+    </h2>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="./js/bookstore.js"></script>
+  </body>
+</html>
