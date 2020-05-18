@@ -2,7 +2,7 @@ var app = new Vue({
   el: "#book",
 
   data: {
-    url: "https://api.npoint.io/906c14ba38db9ecc9e8d2",
+    url: "https://api.npoint.io/906c14ba38db9ecc9e8d",
     searched: [],
     books: [],
   },
